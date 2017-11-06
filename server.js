@@ -1,24 +1,17 @@
-var app = require('express')();
-var http = require('http').Server(app);
-var io = require('socket.io')(http);
+const io = require('socket.io')();
 require('dotenv').config()
-var port = process.env.PORT || 8000;
+const port = process.env.PORT || 8000;
 
-app.get('/', (req, res) => {
-  res.sendFile(__dirname + '/public/index.html');
+
+io.on('connection', (client) => {
+  // here you can start emitting events to the client
+  client.on('subscribeToTimer', (interval) => {
+    console.log('client is subscribing to timer with interval: ', interval)
+    setIterval(() => {
+      client.emit('timer', new Date());
+    }, interval);
+  })
 });
 
-io.on('connection', function(socket){
-  console.log('a user connected');
-  socket.on('chat message', function(msg){
-    io.emit('chat message', msg);
-  });
-
-  socket.on('disconnect', function(){
-    console.log('user disconnected');
-  });
-});
-
-http.listen(port, () => {
-  console.log(`Listening on port: ${port}`)
-})
+io.listen(port);
+console.log('listening on port ', port);
