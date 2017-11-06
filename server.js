@@ -7,7 +7,7 @@ io.on('connection', (client) => {
   // here you can start emitting events to the client
   client.on('subscribeToTimer', (interval) => {
     console.log('client is subscribing to timer with interval: ', interval)
-    setIterval(() => {
+    setInterval(() => {
       client.emit('timer', new Date());
     }, interval);
   })
