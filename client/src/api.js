@@ -1,8 +1,14 @@
 import openSocket from 'socket.io-client';
 const socket = openSocket('http://localhost:8000');
 
-function subscribeToTimer(cb) {
-  socket.on('timer', timestamp => cb(null, timestamp));
-  socket.emit('subscribeToTimer', 1000);
+function subscribeToMessages(cb) {
+  socket.on('move', message => cb(null, message));
+  socket.emit('subscribeToMessages', 500);
 }
-export { subscribeToTimer };
+
+function subscribeSendMessage(message) {
+  socket.emit('subscribeSendMessage', message);
+}
+
+
+export { subscribeToMessages, subscribeSendMessage };
