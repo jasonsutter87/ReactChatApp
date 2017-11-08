@@ -1,28 +1,28 @@
-.App {
+
+.avatar{
+  width: 3em;
+  border-radius: 25px;
+}
+
+.onlineUsers{
+    background-color: #ffeaca;
+    width: 100%;
+    height: 300px;
+    overflow-y: scroll;
+    border: 7px solid #0099ff;
+    border-radius: 15px;
+}
+
+#siteTitle{
+  color: white;
   text-align: center;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
-}
-
-.App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
-  color: white;
-}
-
-.App-title {
-  font-size: 1.5em;
-}
-
-.App-intro {
-  font-size: large;
-}
-
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+#messagesList{
+    background-color: #ffeaca;
+    width: 100%;
+    height: 500px;
+    overflow-y: scroll;
+    border: 7px solid #0099ff;
+    border-radius: 15px;
 }
